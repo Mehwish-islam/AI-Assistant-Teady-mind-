@@ -1,0 +1,1831 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>TeddyMind</title>
+
+
+    <!-- =========================================================
+         CUTE PROFESSIONAL FONT
+    ========================================================== -->
+
+    <link
+        rel="preconnect"
+        href="https://fonts.googleapis.com"
+    >
+
+    <link
+        rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin
+    >
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet"
+    >
+
+
+    <style>
+
+
+        /* =========================================================
+           GLOBAL
+        ========================================================== */
+
+        * {
+
+            box-sizing: border-box;
+
+            margin: 0;
+
+            padding: 0;
+
+            font-family: "Nunito", sans-serif;
+        }
+
+
+
+        /* =========================================================
+           BODY
+        ========================================================== */
+
+        body {
+
+            min-height: 100vh;
+
+            background-image:
+
+                /*
+                 * Dark edge overlay.
+                 * This helps hide unwanted text/details
+                 * that are already inside the background image.
+                 */
+
+                linear-gradient(
+                    90deg,
+                    rgba(7, 3, 14, 0.88) 0%,
+                    rgba(7, 3, 14, 0.25) 20%,
+                    rgba(7, 3, 14, 0.05) 45%,
+                    rgba(7, 3, 14, 0.15) 80%,
+                    rgba(7, 3, 14, 0.55) 100%
+                ),
+
+                linear-gradient(
+                    rgba(10, 5, 20, 0.58),
+                    rgba(15, 5, 30, 0.65)
+                ),
+
+                url("/static/ai-background.jpg");
+
+
+            background-size: cover;
+
+            background-position: center;
+
+            background-repeat: no-repeat;
+
+            background-attachment: fixed;
+
+
+            display: flex;
+
+            justify-content: center;
+
+            align-items: center;
+
+
+            padding: 25px;
+
+
+            color: #ffffff;
+        }
+
+
+
+        /* =========================================================
+           MAIN CONTAINER
+        ========================================================== */
+
+        .container {
+
+            width: 100%;
+
+            max-width: 850px;
+
+            height: 650px;
+
+
+            position: relative;
+
+            z-index: 2;
+
+
+            background:
+
+                linear-gradient(
+                    145deg,
+                    rgba(18, 13, 28, 0.92),
+                    rgba(8, 7, 13, 0.96)
+                );
+
+
+            border:
+
+                1px solid
+                rgba(168, 85, 247, 0.35);
+
+
+            border-radius: 28px;
+
+
+            box-shadow:
+
+                0 25px 70px
+                rgba(0, 0, 0, 0.60),
+
+                0 0 40px
+                rgba(139, 92, 246, 0.15);
+
+
+            overflow: hidden;
+
+
+            display: flex;
+
+            flex-direction: column;
+
+
+            backdrop-filter: blur(18px);
+
+            -webkit-backdrop-filter: blur(18px);
+        }
+
+
+
+        /* =========================================================
+           TINY TEDDY DECORATIONS
+        ========================================================== */
+
+        .tiny-teddy {
+
+            position: absolute;
+
+            z-index: 5;
+
+
+            font-size: 22px;
+
+
+            opacity: 0.55;
+
+
+            pointer-events: none;
+
+
+            filter:
+
+                drop-shadow(
+                    0 0 8px
+                    rgba(168, 85, 247, 0.35)
+                );
+
+
+            animation:
+
+                teddyFloat
+                4s
+                ease-in-out
+                infinite;
+        }
+
+
+
+        .teddy-one {
+
+            top: 125px;
+
+            right: 20px;
+        }
+
+
+
+        .teddy-two {
+
+            bottom: 105px;
+
+            left: 18px;
+
+
+            font-size: 18px;
+
+
+            opacity: 0.40;
+
+
+            animation-delay: 1.5s;
+        }
+
+
+
+        .teddy-three {
+
+            top: 315px;
+
+            right: 18px;
+
+
+            font-size: 16px;
+
+
+            opacity: 0.30;
+
+
+            animation-delay: 2.5s;
+        }
+
+
+
+        @keyframes teddyFloat {
+
+            0%,
+            100% {
+
+                transform:
+                    translateY(0)
+                    rotate(-3deg);
+            }
+
+
+            50% {
+
+                transform:
+                    translateY(-5px)
+                    rotate(3deg);
+            }
+
+        }
+
+
+
+        /* =========================================================
+           HEADER
+        ========================================================== */
+
+        .header {
+
+            background:
+
+                linear-gradient(
+                    135deg,
+                    #17111f,
+                    #241139,
+                    #120c1c
+                );
+
+
+            color: white;
+
+
+            padding: 23px 30px;
+
+
+            text-align: center;
+
+
+            border-bottom:
+
+                1px solid
+                rgba(168, 85, 247, 0.30);
+
+
+            box-shadow:
+
+                0 5px 25px
+                rgba(0, 0, 0, 0.35);
+
+
+            position: relative;
+
+            z-index: 2;
+        }
+
+
+
+        /* =========================================================
+           TEDDYMIND TITLE
+        ========================================================== */
+
+        .header h1 {
+
+            font-size: 30px;
+
+            font-weight: 800;
+
+
+            margin-bottom: 7px;
+
+
+            letter-spacing: 0.3px;
+
+
+            background:
+
+                linear-gradient(
+                    90deg,
+                    #ffffff,
+                    #e9d5ff,
+                    #a855f7
+                );
+
+
+            background-clip: text;
+
+            -webkit-background-clip: text;
+
+            -webkit-text-fill-color: transparent;
+        }
+
+
+
+        .header p {
+
+            color: #b9a9c9;
+
+
+            font-size: 14px;
+
+
+            font-weight: 500;
+
+
+            letter-spacing: 0.2px;
+        }
+
+
+
+        /* =========================================================
+           CHAT AREA
+        ========================================================== */
+
+        .chat-area {
+
+            flex: 1;
+
+
+            padding: 30px;
+
+
+            overflow-y: auto;
+
+
+            background:
+
+                rgba(7, 5, 12, 0.38);
+
+
+            position: relative;
+        }
+
+
+
+        /* =========================================================
+           WELCOME
+        ========================================================== */
+
+        .welcome {
+
+            text-align: center;
+
+
+            margin-top: 55px;
+
+
+            color: #cfc5d8;
+
+
+            position: relative;
+        }
+
+
+
+        /* =========================================================
+           WELCOME TEDDY
+        ========================================================== */
+
+        .welcome-teddy {
+
+            font-size: 28px;
+
+
+            margin-bottom: 4px;
+
+
+            opacity: 0.75;
+
+
+            filter:
+
+                drop-shadow(
+                    0 0 10px
+                    rgba(168, 85, 247, 0.35)
+                );
+
+
+            animation:
+
+                teddyWelcome
+                3s
+                ease-in-out
+                infinite;
+        }
+
+
+
+        @keyframes teddyWelcome {
+
+            0%,
+            100% {
+
+                transform:
+                    translateY(0);
+            }
+
+
+            50% {
+
+                transform:
+                    translateY(-5px);
+            }
+
+        }
+
+
+
+        /* =========================================================
+           AI ROBOT
+        ========================================================== */
+
+        .icon {
+
+            width: 100px;
+
+            height: 100px;
+
+
+            margin:
+                0 auto 15px;
+
+
+            display: flex;
+
+
+            justify-content: center;
+
+            align-items: center;
+
+
+            position: relative;
+        }
+
+
+
+        .purple-robot {
+
+            width: 75px;
+
+            height: 65px;
+
+
+            position: relative;
+
+
+            filter:
+
+                drop-shadow(
+                    0 0 14px
+                    rgba(168, 85, 247, 0.45)
+                );
+        }
+
+
+
+        /* Robot head */
+
+        .robot-face {
+
+            width: 68px;
+
+            height: 55px;
+
+
+            position: absolute;
+
+
+            left: 3px;
+
+            top: 10px;
+
+
+            background:
+
+                linear-gradient(
+                    135deg,
+                    #9b5de5,
+                    #6d28d9
+                );
+
+
+            border-radius: 18px;
+
+
+            border:
+
+                2px solid
+                #c084fc;
+
+
+            box-shadow:
+
+                0 8px 25px
+                rgba(124, 58, 237, 0.35);
+        }
+
+
+
+        /* Robot ears */
+
+        .robot-face::before,
+        .robot-face::after {
+
+            content: "";
+
+
+            position: absolute;
+
+
+            top: 17px;
+
+
+            width: 7px;
+
+            height: 20px;
+
+
+            background: #7c3aed;
+
+
+            border-radius: 8px;
+        }
+
+
+
+        .robot-face::before {
+
+            left: -9px;
+        }
+
+
+
+        .robot-face::after {
+
+            right: -9px;
+        }
+
+
+
+        /* Robot eyes */
+
+        .robot-eyes {
+
+            position: absolute;
+
+
+            top: 12px;
+
+            left: 15px;
+
+
+            width: 34px;
+
+            height: 17px;
+
+
+            background: #ffffff;
+
+
+            border-radius: 10px;
+
+
+            color: #7c3aed;
+
+
+            font-size: 15px;
+
+
+            font-weight: bold;
+
+
+            line-height: 13px;
+
+
+            text-align: center;
+
+
+            letter-spacing: 5px;
+
+
+            padding-left: 4px;
+
+
+            box-shadow:
+
+                0 0 10px
+                rgba(255, 255, 255, 0.35);
+        }
+
+
+
+        /* Robot mouth */
+
+        .robot-mouth {
+
+            position: absolute;
+
+
+            width: 20px;
+
+            height: 5px;
+
+
+            background: #35105c;
+
+
+            border-radius: 10px;
+
+
+            bottom: 10px;
+
+
+            left: 21px;
+        }
+
+
+
+        /* Antenna */
+
+        .antenna {
+
+            position: absolute;
+
+
+            width: 4px;
+
+            height: 13px;
+
+
+            background: #a855f7;
+
+
+            top: 0;
+
+
+            left: 36px;
+
+
+            border-radius: 5px;
+        }
+
+
+
+        .antenna::before {
+
+            content: "";
+
+
+            position: absolute;
+
+
+            width: 10px;
+
+            height: 10px;
+
+
+            background: #c084fc;
+
+
+            border-radius: 50%;
+
+
+            top: -7px;
+
+            left: -3px;
+
+
+            box-shadow:
+
+                0 0 15px
+                rgba(192, 132, 252, 0.8);
+        }
+
+
+
+        /* =========================================================
+           WELCOME TEXT
+        ========================================================== */
+
+        .welcome h2 {
+
+            color: #ffffff;
+
+
+            font-size: 28px;
+
+
+            font-weight: 700;
+
+
+            margin-bottom: 10px;
+
+
+            letter-spacing: 0.2px;
+        }
+
+
+
+        .welcome p {
+
+            color: #aaa0b5;
+
+
+            font-size: 15px;
+
+
+            font-weight: 500;
+        }
+
+
+
+        /* =========================================================
+           MESSAGES
+        ========================================================== */
+
+        .message {
+
+            margin-bottom: 20px;
+
+
+            display: flex;
+
+
+            animation:
+
+                messageAppear
+                0.25s
+                ease;
+        }
+
+
+
+        @keyframes messageAppear {
+
+            from {
+
+                opacity: 0;
+
+                transform:
+                    translateY(6px);
+            }
+
+
+            to {
+
+                opacity: 1;
+
+                transform:
+                    translateY(0);
+            }
+
+        }
+
+
+
+        .user-message {
+
+            justify-content: flex-end;
+        }
+
+
+
+        .ai-message {
+
+            justify-content: flex-start;
+        }
+
+
+
+        /* =========================================================
+           CHAT BUBBLES
+        ========================================================== */
+
+        .bubble {
+
+            max-width: 75%;
+
+
+            padding:
+                14px 18px;
+
+
+            border-radius: 18px;
+
+
+            line-height: 1.6;
+
+
+            font-size: 15px;
+
+
+            font-weight: 500;
+
+
+            word-wrap: break-word;
+
+
+            position: relative;
+        }
+
+
+
+        /* =========================================================
+           USER MESSAGE
+        ========================================================== */
+
+        .user-message .bubble {
+
+            background:
+
+                linear-gradient(
+                    135deg,
+                    #7c3aed,
+                    #5b21b6
+                );
+
+
+            color: white;
+
+
+            border:
+
+                1px solid
+                rgba(192, 132, 252, 0.35);
+
+
+            border-bottom-right-radius: 5px;
+
+
+            box-shadow:
+
+                0 7px 20px
+                rgba(91, 33, 182, 0.30);
+        }
+
+
+
+        /* =========================================================
+           AI MESSAGE
+        ========================================================== */
+
+        .ai-message .bubble {
+
+            background:
+
+                linear-gradient(
+                    145deg,
+                    rgba(35, 27, 45, 0.94),
+                    rgba(19, 16, 25, 0.94)
+                );
+
+
+            color: #eee7f5;
+
+
+            border:
+
+                1px solid
+                rgba(168, 85, 247, 0.20);
+
+
+            border-bottom-left-radius: 5px;
+
+
+            box-shadow:
+
+                0 7px 20px
+                rgba(0, 0, 0, 0.30);
+        }
+
+
+
+        /* =========================================================
+           TINY TEDDY BESIDE AI
+        ========================================================== */
+
+        .ai-message::before {
+
+            content: "🧸";
+
+
+            font-size: 17px;
+
+
+            margin-right: 8px;
+
+
+            margin-top: 8px;
+
+
+            opacity: 0.55;
+
+
+            filter:
+
+                drop-shadow(
+                    0 0 6px
+                    rgba(168, 85, 247, 0.30)
+                );
+        }
+
+
+
+        /* =========================================================
+           INPUT AREA
+        ========================================================== */
+
+        .input-area {
+
+            padding: 20px;
+
+
+            background:
+
+                rgba(10, 8, 15, 0.90);
+
+
+            border-top:
+
+                1px solid
+                rgba(168, 85, 247, 0.22);
+
+
+            display: flex;
+
+
+            gap: 12px;
+
+
+            backdrop-filter: blur(15px);
+
+
+            position: relative;
+
+
+            z-index: 3;
+        }
+
+
+
+        /* =========================================================
+           INPUT
+        ========================================================== */
+
+        #question {
+
+            flex: 1;
+
+
+            padding:
+                15px 18px;
+
+
+            border:
+
+                1px solid
+                rgba(168, 85, 247, 0.25);
+
+
+            background:
+
+                rgba(25, 20, 32, 0.90);
+
+
+            color: #ffffff;
+
+
+            border-radius: 15px;
+
+
+            outline: none;
+
+
+            font-size: 15px;
+
+
+            font-weight: 500;
+
+
+            transition: 0.25s;
+        }
+
+
+
+        #question::placeholder {
+
+            color: #80758a;
+        }
+
+
+
+        #question:focus {
+
+            border-color: #a855f7;
+
+
+            box-shadow:
+
+                0 0 0 3px
+                rgba(168, 85, 247, 0.12),
+
+                0 0 20px
+                rgba(168, 85, 247, 0.08);
+        }
+
+
+
+        /* =========================================================
+           BUTTON
+        ========================================================== */
+
+        button {
+
+            border: none;
+
+
+            background:
+
+                linear-gradient(
+                    135deg,
+                    #8b5cf6,
+                    #6d28d9
+                );
+
+
+            color: white;
+
+
+            padding:
+                0 25px;
+
+
+            border-radius: 15px;
+
+
+            cursor: pointer;
+
+
+            font-size: 15px;
+
+
+            font-weight: 800;
+
+
+            transition: 0.25s;
+
+
+            box-shadow:
+
+                0 6px 18px
+                rgba(109, 40, 217, 0.30);
+        }
+
+
+
+        button:hover {
+
+            transform:
+                translateY(-2px);
+
+
+            background:
+
+                linear-gradient(
+                    135deg,
+                    #a78bfa,
+                    #7c3aed
+                );
+
+
+            box-shadow:
+
+                0 9px 25px
+                rgba(124, 58, 237, 0.40);
+        }
+
+
+
+        button:active {
+
+            transform:
+                translateY(0);
+        }
+
+
+
+        button:disabled {
+
+            opacity: 0.6;
+
+
+            cursor: not-allowed;
+
+
+            transform: none;
+        }
+
+
+
+        /* =========================================================
+           LOADING
+        ========================================================== */
+
+        .loading {
+
+            display: none;
+
+
+            color: #c084fc;
+
+
+            font-size: 14px;
+
+
+            margin-bottom: 15px;
+
+
+            font-weight: 600;
+
+
+            margin-left: 28px;
+        }
+
+
+
+        /* =========================================================
+           SCROLLBAR
+        ========================================================== */
+
+        .chat-area::-webkit-scrollbar {
+
+            width: 7px;
+        }
+
+
+
+        .chat-area::-webkit-scrollbar-thumb {
+
+            background:
+
+                linear-gradient(
+                    #8b5cf6,
+                    #4c1d95
+                );
+
+
+            border-radius: 10px;
+        }
+
+
+
+        .chat-area::-webkit-scrollbar-track {
+
+            background: transparent;
+        }
+
+
+
+        /* =========================================================
+           MOBILE
+        ========================================================== */
+
+        @media (max-width: 600px) {
+
+            body {
+
+                padding: 0;
+            }
+
+
+
+            .container {
+
+                height: 100vh;
+
+
+                border-radius: 0;
+
+
+                border-left: none;
+
+                border-right: none;
+            }
+
+
+
+            .header {
+
+                padding: 20px;
+            }
+
+
+
+            .header h1 {
+
+                font-size: 23px;
+            }
+
+
+
+            .chat-area {
+
+                padding: 20px;
+            }
+
+
+
+            .welcome {
+
+                margin-top: 45px;
+            }
+
+
+
+            .welcome h2 {
+
+                font-size: 23px;
+            }
+
+
+
+            .bubble {
+
+                max-width: 85%;
+            }
+
+
+
+            .input-area {
+
+                padding: 12px;
+            }
+
+
+
+            button {
+
+                padding: 0 18px;
+            }
+
+
+
+            .tiny-teddy {
+
+                display: none;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+
+<body>
+
+
+<div class="container">
+
+
+    <!-- =========================================================
+         TINY TEDDY DECORATIONS
+    ========================================================== -->
+
+    <div class="tiny-teddy teddy-one">
+        🧸
+    </div>
+
+
+    <div class="tiny-teddy teddy-two">
+        🧸
+    </div>
+
+
+    <div class="tiny-teddy teddy-three">
+        🧸
+    </div>
+
+
+
+    <!-- =========================================================
+         HEADER
+    ========================================================== -->
+
+    <div class="header">
+
+        <h1>
+            🧸 TeddyMind
+        </h1>
+
+
+        <p>
+            Your little AI companion
+        </p>
+
+    </div>
+
+
+
+    <!-- =========================================================
+         CHAT AREA
+    ========================================================== -->
+
+    <div
+        class="chat-area"
+        id="chatArea"
+    >
+
+
+        <div
+            class="welcome"
+            id="welcome"
+        >
+
+
+            <div class="welcome-teddy">
+                🧸
+            </div>
+
+
+
+            <div class="icon">
+
+                <div class="purple-robot">
+
+
+                    <div class="antenna">
+                    </div>
+
+
+                    <div class="robot-face">
+
+
+                        <div class="robot-eyes">
+                            ••
+                        </div>
+
+
+                        <div class="robot-mouth">
+                        </div>
+
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <h2>
+                How can TeddyMind help?
+            </h2>
+
+
+            <p>
+                Ask a question and let's get started.
+            </p>
+
+
+        </div>
+
+    </div>
+
+
+
+    <!-- =========================================================
+         INPUT
+    ========================================================== -->
+
+    <div class="input-area">
+
+
+        <input
+            id="question"
+            type="text"
+            placeholder="Ask TeddyMind something..."
+            autocomplete="off"
+        >
+
+
+        <button
+            id="askButton"
+            onclick="askAI()"
+        >
+            Ask
+        </button>
+
+
+    </div>
+
+
+</div>
+
+
+
+<script>
+
+
+    /* =========================================================
+       ELEMENTS
+    ========================================================== */
+
+    const questionInput =
+        document.getElementById("question");
+
+
+    const chatArea =
+        document.getElementById("chatArea");
+
+
+    const askButton =
+        document.getElementById("askButton");
+
+
+    const welcome =
+        document.getElementById("welcome");
+
+
+
+    /* =========================================================
+       ASK AI
+    ========================================================== */
+
+    async function askAI() {
+
+
+        const question =
+            questionInput.value.trim();
+
+
+        if (!question) {
+
+            return;
+        }
+
+
+
+        /* Remove welcome */
+
+        if (welcome) {
+
+            welcome.remove();
+        }
+
+
+
+        /* Show user question */
+
+        addMessage(
+            question,
+            "user"
+        );
+
+
+
+        /* Clear input */
+
+        questionInput.value = "";
+
+
+
+        /* Disable button */
+
+        askButton.disabled = true;
+
+
+        askButton.innerText =
+            "Thinking...";
+
+
+
+        /* Loading */
+
+        const loading =
+            document.createElement("div");
+
+
+        loading.className =
+            "loading";
+
+
+        loading.innerText =
+            "🧸 TeddyMind is thinking...";
+
+
+        chatArea.appendChild(
+            loading
+        );
+
+
+        loading.style.display =
+            "block";
+
+
+        scrollToBottom();
+
+
+
+        try {
+
+
+            /* Send request */
+
+            const response =
+                await fetch(
+                    "/ask",
+                    {
+
+                        method: "POST",
+
+
+                        headers: {
+
+                            "Content-Type":
+                                "application/json"
+                        },
+
+
+                        body:
+                            JSON.stringify({
+
+                                message:
+                                    question
+                            })
+                    }
+                );
+
+
+
+            const data =
+                await response.json();
+
+
+
+            /* Remove loading */
+
+            loading.remove();
+
+
+
+            /* Show response */
+
+            if (response.ok) {
+
+
+                addMessage(
+                    data.answer,
+                    "ai"
+                );
+
+
+            } else {
+
+
+                addMessage(
+                    "Sorry, something went wrong.",
+                    "ai"
+                );
+
+            }
+
+
+        } catch (error) {
+
+
+            loading.remove();
+
+
+            addMessage(
+                "Unable to connect to the server.",
+                "ai"
+            );
+
+
+            console.error(error);
+
+        }
+
+
+
+        /* Enable button */
+
+        askButton.disabled =
+            false;
+
+
+        askButton.innerText =
+            "Ask";
+
+
+        questionInput.focus();
+
+    }
+
+
+
+    /* =========================================================
+       CLEAN AI RESPONSE
+    ========================================================== */
+
+    function cleanAIResponse(text) {
+
+
+        if (!text) {
+
+            return "";
+        }
+
+
+        /*
+         * Remove ```html
+         * Remove ```python
+         * Remove ```javascript
+         * Remove ```css
+         * Remove plain ```
+         */
+
+        text = text.replace(
+            /```[a-zA-Z0-9_-]*/g,
+            ""
+        );
+
+
+        /*
+         * Remove Markdown bold markers
+         *
+         * **Machine Learning**
+         * becomes
+         * Machine Learning
+         */
+
+        text = text.replace(
+            /\*\*(.*?)\*\*/g,
+            "$1"
+        );
+
+
+        /*
+         * Remove Markdown italic markers
+         */
+
+        text = text.replace(
+            /(?<!\*)\*([^*]+)\*(?!\*)/g,
+            "$1"
+        );
+
+
+        /*
+         * Remove unnecessary HTML tags
+         * if the AI sends them.
+         */
+
+        text = text.replace(
+            /<\/?(html|head|body|script|style)[^>]*>/gi,
+            ""
+        );
+
+
+        return text.trim();
+    }
+
+
+
+    /* =========================================================
+       ADD MESSAGE
+    ========================================================== */
+
+    function addMessage(
+        text,
+        type
+    ) {
+
+
+        const message =
+            document.createElement("div");
+
+
+        message.className =
+            "message " +
+            type +
+            "-message";
+
+
+
+        const bubble =
+            document.createElement("div");
+
+
+        bubble.className =
+            "bubble";
+
+
+
+        /* Clean only AI responses */
+
+        if (type === "ai") {
+
+            text =
+                cleanAIResponse(text);
+        }
+
+
+
+        bubble.innerText =
+            text;
+
+
+
+        message.appendChild(
+            bubble
+        );
+
+
+        chatArea.appendChild(
+            message
+        );
+
+
+        scrollToBottom();
+
+    }
+
+
+
+    /* =========================================================
+       SCROLL
+    ========================================================== */
+
+    function scrollToBottom() {
+
+        chatArea.scrollTop =
+            chatArea.scrollHeight;
+
+    }
+
+
+
+    /* =========================================================
+       ENTER KEY
+    ========================================================== */
+
+    questionInput.addEventListener(
+        "keydown",
+        function(event) {
+
+
+            if (event.key === "Enter") {
+
+                event.preventDefault();
+
+                askAI();
+
+            }
+
+        }
+    );
+
+
+</script>
+
+
+</body>
+
+</html>
